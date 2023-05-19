@@ -1,10 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import MazeGeneratorVisualizer from "./MazeGeneratorVisualizer/MazeGeneratorVisualizer.jsx";
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Maze-Generator</h1>
+      <MazeGeneratorVisualizer></MazeGeneratorVisualizer>
     </div>
   );
 }

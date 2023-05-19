@@ -12,7 +12,7 @@ import {SiGmail} from "react-icons/si";
 import { TiTickOutline } from "react-icons/ti";
 import { ImCross } from "react-icons/im";
 
-export default class PathFindingVisualizer extends Component
+export default class PathFindingVisualizer extends component
 {
     constructor(props){
         super(props);
@@ -76,5 +76,47 @@ componentDidMount=()=>{
       this.state.points.finish.row,
       this.state.points.finish.col
     );
-    this.setState({grid,});
-  };
+    this.setState({
+        grid,
+    });
+};
+
+https://github.com/Suhaan-Bhandary/Maze-Generator-DFS/blob/main/src/MazeGeneratorVisualizer/MazeGeneratorVisualizer.jsx#L109=()=>{
+    this.setState({phase:"Maze"});
+    const {grid}=this.state;
+    const startNode=grid[this.state.points.start.row][this.state.points.start.col];
+    
+    const finishNode=grid[this.state.points.finish.row][this.state.points.finish.col];
+
+    // let visitedNodesInOrder=[];
+
+    const visitedNodesInOrder=dfs(grid,startNode,finishNode);
+
+    this.animateMazeGeneration(visitedNodesInOrder,grid);
+};
+
+
+animateMazeGeneration(visitedNodesInOrder,grid)
+{
+    if(this.state.animationState)
+    {
+        for(let i=1;i<visitedNodesInOrder.length;++i)
+        {
+            setTimeout(()=>{
+                // this.setState({
+                //     animationState:false,
+                // });
+                this.setState({phase:"postMaze"});
+                this.setState({grid:grid});
+            })
+        }
+    }
+    // this.setState({
+    //     animationState:false,
+    // });
+    // setTimeout(()=>{
+    //     this.setState({
+    //         animationState:true,
+    //     });
+    // },this.state.mazeGenerationSpeed);
+}
