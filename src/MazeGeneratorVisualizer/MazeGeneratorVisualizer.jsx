@@ -151,6 +151,47 @@ animateMazeGeneration(visitedNodesInOrder,grid)
     }
     else
     {
-
+        for(let i=1;i<visitedNodesInOrder.length;i++)
+        {
+            if(i===visitedNodesInOrder.length-1)
+            {
+                this.setState({phase:"postMaze"});
+                // this.setState({animationState:false});
+                this.setState({grid:grid,});
+            }
+            const node=visitedNodesInOrder[i];
+            const nodeElement=document.getElementById(`node-${node.row}-${node.col}`);
+            nodeElement.classList.add("node");
+            if(nodeElement.classList.remove("node-finish"))
+            {
+                console.log("finish");
+            }
+            else if(nodeElement.classList.remove("node-visited"))
+            {
+                nodeElement.classList.remove("node-visited");
+                // console.log("node-visited");
+                nodeElement.classList.add("RevisitedNode");
+            }
+            else
+            {
+                nodeElement.classList.add("node-visited");
+            }
+            if(node.topWall)
+            {
+                nodeElement.classList.add("topWall");
+            }
+            if(node.bottomWall)
+            {
+                nodeElement.classList.add("bottomWall");
+            }
+            if(node.leftWall)
+            {
+                nodeElement.classList.add("leftWall");
+            }
+            if(node.rightWall)
+            {
+                nodeElement.classList.add("rightWall");
+            }
+        }
     }
 }
