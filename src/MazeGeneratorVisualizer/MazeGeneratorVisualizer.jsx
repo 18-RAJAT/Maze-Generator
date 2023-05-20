@@ -81,7 +81,7 @@ componentDidMount=()=>{
     });
 };
 
-https://github.com/Suhaan-Bhandary/Maze-Generator-DFS/blob/main/src/MazeGeneratorVisualizer/MazeGeneratorVisualizer.jsx#L109=()=>{
+visualizeMazeGeneration=()=>{
     this.setState({phase:"Maze"});
     const {grid}=this.state;
     const startNode=grid[this.state.points.start.row][this.state.points.start.col];
@@ -100,23 +100,57 @@ animateMazeGeneration(visitedNodesInOrder,grid)
 {
     if(this.state.animationState)
     {
-        for(let i=1;i<visitedNodesInOrder.length;++i)
+        for(let i=1;i<visitedNodesInOrder.length;i++)
         {
-            setTimeout(()=>{
-                // this.setState({
-                //     animationState:false,
-                // });
-                this.setState({phase:"postMaze"});
-                this.setState({grid:grid});
-            })
+            setTimeout(()=>
+            {
+                if(i===visitedNodesInOrder.length-1)
+                {
+                    this.setState({phase:"postMaze"});
+                    // this.setState({animationState:false});
+                    this.setState({grid:grid,});
+                }
+                const node=visitedNodesInOrder[i];
+                const nodeElement=document.getElementById(`node-${node.row}-${node.col}`);
+
+                // nodeElement.classList.remove("visited");
+                nodeElement.classList.add("node");
+
+                if(nodeElement.classList.remove("node-finish"))
+                {
+                    console.log("finish");
+                }
+                else if(nodeElement.classList.remove("node-visited"))
+                {
+                    nodeElement.classList.remove("node-visited");
+                    // console.log("node-visited");
+                    nodeElement.classList.add("RevisitedNode");
+                }
+                else
+                {
+                    nodeElement.classList.add("node-visited");
+                }
+                if(node.topWall)
+                {
+                    nodeElement.classList.add("topWall");
+                }
+                if(node.bottomWall)
+                {
+                    nodeElement.classList.add("bottomWall");
+                }
+                if(node.leftWall)
+                {
+                    nodeElement.classList.add("leftWall");
+                }
+                if(node.rightWall)
+                {
+                    nodeElement.classList.add("rightWall");
+                }
+            },(300*i)/this.state.mazeGenerationSpeed);
         }
     }
-    // this.setState({
-    //     animationState:false,
-    // });
-    // setTimeout(()=>{
-    //     this.setState({
-    //         animationState:true,
-    //     });
-    // },this.state.mazeGenerationSpeed);
+    else
+    {
+
+    }
 }
