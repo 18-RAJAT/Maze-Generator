@@ -102,8 +102,7 @@ animateMazeGeneration(visitedNodesInOrder,grid)
     {
         for(let i=1;i<visitedNodesInOrder.length;i++)
         {
-            setTimeout(()=>
-            {
+            setTimeout(()=>{
                 if(i===visitedNodesInOrder.length-1)
                 {
                     this.setState({phase:"postMaze"});
@@ -195,3 +194,26 @@ animateMazeGeneration(visitedNodesInOrder,grid)
         }
     }
 }
+
+//not getting the visualization part of shortest path...
+
+animateShortestPath=()=>
+{
+    // const finishNode=document.getElementById(`node-${this.state.points.finish.row}-${this.state.points.finish.col}`);
+
+    const finishNode=this.state.grid[this.state.points.finish.row][this.state.points.finish.col];
+
+    // const visitedNodesInOrder=bfs(this.state.grid,this.state.points.start,finishNode);
+
+    const nodesInShortestPathOrder=getNodesInShortestPathOrder(finishNode);
+
+
+    for(let i=1;i<nodesInShortestPathOrder.length-1;i++)
+    {
+        setTimeOut(()=>{
+            const node=nodesInShortestPathOrder[i];
+            // const nodeElement=document.getElementById(`node-${node.row}-${node.col}`);
+            document.getElementById(`node-${node.row}-${node.col}`).classList.add("node-path");
+        },50*i);
+    }
+};
