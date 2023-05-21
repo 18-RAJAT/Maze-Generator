@@ -217,3 +217,43 @@ animateShortestPath=()=>
         },50*i);
     }
 };
+
+pointChangeHandler=()=>
+{
+    if(notCorrectProperty(this.state.length.row,this.state.length.col))
+    {
+        this.setState({errorMessage:"Invalid Input"});
+        return;   
+    }
+    //provided value is suitable or not  (Y/N)
+    const start_row=parseInt(document.getElementById("start_row").value);
+    const start_col=parseInt(document.getElementById("start_col").value);
+    const finish_row=parseInt(document.getElementById("end_row").value);
+    const finish_col=parseInt(document.getElementById("end_col").value);
+
+    const newGrid=getGrid
+    (
+        this.state.length.row,
+        this.state.length.col,
+
+        start_row,
+        start_col,
+        finish_row,
+        finish_col
+    );
+    this.setState
+    ({
+        grid:newGrid,
+        errorMessage:"",
+        points:{
+            start:{
+                row:start_row,
+                col:start_col,
+            },
+            finish:{
+                row:finish_row,
+                col:finish_col,
+            },
+        },
+    });
+};
