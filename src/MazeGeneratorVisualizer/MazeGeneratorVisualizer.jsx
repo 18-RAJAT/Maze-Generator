@@ -271,7 +271,7 @@ lengthChangeHandler=()=>
     const row_length=document.getElementById("row_length").value;
     const col_length=document.getElementById("col_length").value;
 
-    if(row_length>50 or col_length>50)
+    if(row_length>50 || col_length>50)
     {
         this.setState({errorMessage:"Invalid Size",});
         return;
