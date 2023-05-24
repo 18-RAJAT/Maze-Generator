@@ -257,3 +257,11 @@ pointChangeHandler=()=>
         },
     });
 };
+
+speedChangeHandler=()=>
+{
+    const changedSpeed=parseInt(
+        document.getElementById("mazeSpeedRange").value
+    );
+    this.setState({mazeGenerationSpeed:changedSpeed,});
+};
