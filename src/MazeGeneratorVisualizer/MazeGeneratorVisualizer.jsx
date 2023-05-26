@@ -276,4 +276,39 @@ lengthChangeHandler=()=>
         this.setState({errorMessage:"Invalid Size",});
         return;
     }
+    //getting the new grid
+    const newGrid=getGrid(row_length,col_length,0,0,row_length-1,col_length-1);
+
+    //changing the state like changing the new value of the input elements
+
+    document.getElementById("start_row").value=0;
+    document.getElementById("start_col").value=0;
+    document.getElementById("end_row").value=row_length-1;
+    document.getElementById("end_col").value=col_length-1;
+
+    //Assigning the new grid to the state and new values
+
+    this.setState
+    ({
+        grid:newGrid,
+        errorMessage:"",
+        points:
+        {
+            start:
+            {
+                row:0,
+                col:0,
+            },
+            finish:
+            {
+                row:row_length-1,
+                col:col_length-1,
+            },
+        },
+        length:
+        {
+            row:row_length,
+            col:col_length,
+        },
+    });
 };
