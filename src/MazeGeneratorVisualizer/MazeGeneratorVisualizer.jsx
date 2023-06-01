@@ -312,3 +312,8 @@ lengthChangeHandler=()=>
         },
     });
 };
+
+animationStateChangeHandler=()=>
+{
+    this.setState({animationState:!this.state.animationState,});
+}
