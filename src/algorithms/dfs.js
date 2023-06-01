@@ -93,7 +93,7 @@ const getKids=(node,grid)=>{
     return kids.filter((kid)=>!kid.isValid);
 };
 
-//backtracking from the finish node to find the path(shortest path)
+//backtracking from the finish node to find the path(shortest path) in the maze
 
 export function getNodesInShortestPath(finishNode)
 {
@@ -102,7 +102,7 @@ export function getNodesInShortestPath(finishNode)
     // while(current.previousNode!==null)
     while(current!==null)
     {
-        //unshift is used to add the node to the beginning
+        //unshift is used to add the node to the beginning of the array
         nodeInShortestPathOrder.unshift(current);
         current=current.previousNode;
     }

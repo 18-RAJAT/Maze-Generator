@@ -386,5 +386,7 @@ handleMouseUp(row,col)
         },
     });
     document.getElementById("start_row").value=start_row;
+    document.getElementById("start_col").value=start_col;
     document.getElementById("end_row").value=finish_row;
+    document.getElementById("end_col").value=finish_col;
 }
