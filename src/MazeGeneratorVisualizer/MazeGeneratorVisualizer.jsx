@@ -338,3 +338,53 @@ handleMouseDown(row,col)
         this.setState({dragNode:"normal"});
     }
 }
+
+handleMouseUp(row,col)
+{
+    //Check condition to see if the maze is running or not
+    if(this.state.phase!=="preMaze")
+    {
+        return;
+    }
+    let start_row=this.state.points.start.row;
+    let start_col=this.state.points.start.col;
+    let finish_row=this.state.points.finish.row;    
+    let finish_col=this.state.points.finish.col;
+
+    //changing the value of start and end not depending on the mouse drag
+    if(this.state.dragNode==="start")
+    {
+        start_row=row;
+        start_col=col;
+    }
+    else if(this.state.dragNode==="finish")
+    {
+        finish_row=row;
+        finish_col=col;
+    }
+    else
+    {
+        return;
+    }
+    const newGrid=getGrid(this.state.length.row,this.state.length.col,start_row,start_col,finish_row,finish_col);
+    this.setState
+    ({
+        grid:newGrid,
+        errorMessage:"",
+        points:
+        {
+            start:
+            {
+                row:start_row,
+                col:start_col,
+            },
+            finish:
+            {
+                row:finish_row,
+                col:finish_col,
+            },
+        },
+    });
+    document.getElementById("start_row").value=start_row;
+    document.getElementById("end_row").value=finish_row;
+}
