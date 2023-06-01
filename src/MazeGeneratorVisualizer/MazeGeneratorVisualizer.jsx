@@ -317,3 +317,24 @@ animationStateChangeHandler=()=>
 {
     this.setState({animationState:!this.state.animationState,});
 }
+
+//mouse pressing to down
+handleMouseDown(row,col)
+{
+    if(this.state.phase!=="preMaze")
+    {
+        return;
+    };
+    if(this.state.grid[row][col].isStart)
+    {
+        this.setState({dragNode:"start"});
+    }
+    else if(this.state.grid[row][col].isFinish)
+    {
+        this.setState({dragNode:"finish"});
+    }
+    else
+    {
+        this.setState({dragNode:"normal"});
+    }
+}
