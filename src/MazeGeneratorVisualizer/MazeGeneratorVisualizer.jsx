@@ -399,4 +399,25 @@ render()
     {
         animationStateChangerButton=(<button onClick={this.animationStateChangeHandler} style={{color:"#fff",backgroundColor:"#FF0000",width:"100px",height:"30px",border:"1px solid #fff"}}>Animation <ImCross/></button>);
     }
+    if(this.state.phase==="preMaze")
+    {
+        buttonContainer=(<div className="buttonContainer">
+            <button onClick={this.visualizeMazeGeneration}> Maze </button>
+            <button onClick={exportPdf}> Screenshot </button>
+        </div>);
+    }
+    else if(this.state.phase==="Maze")
+    {
+        buttonContainer=(<div className="buttonContainer">
+            <button>Generating...!!</button>
+            <button onClick={exportPdf}> Screenshot </button>
+        </div>);
+    }
+    else if(this.state.phase==="postMaze")
+    {
+        buttonContainer=(<div className="buttonContainer">
+            <button onClick={this.animateShortestPath}> Path </button>
+            <button onClick={exportPdf}> Screenshot </button>
+        </div>);
+    }
 }
