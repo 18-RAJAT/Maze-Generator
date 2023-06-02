@@ -390,3 +390,13 @@ handleMouseUp(row,col)
     document.getElementById("end_row").value=finish_row;
     document.getElementById("end_col").value=finish_col;
 }
+
+render()
+{
+    let buttonContainer=<p>System Error...!!</p>;
+    let animationStateChangerButton=(<button onClick={this.animationStateChangeHandler}style={{color:"#fff",backgroundColor:"#25D366",width:"100px",height:"30px",border:"1px solid #fff"}}>Animation <TiTickOutline/></button>);
+    if(this.state.animationState===false)
+    {
+        animationStateChangerButton=(<button onClick={this.animationStateChangeHandler} style={{color:"#fff",backgroundColor:"#FF0000",width:"100px",height:"30px",border:"1px solid #fff"}}>Animation <ImCross/></button>);
+    }
+}
