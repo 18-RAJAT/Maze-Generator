@@ -420,4 +420,15 @@ render()
             <button onClick={exportPdf}> Screenshot </button>
         </div>);
     }
+    let actionContainer=<div></div>;
+    if(this.state.phase==="preMaze")
+    {
+        actionContainer=
+        (
+            <div className="title">
+                <label htmlFor="highSlider">Height:{this.state.length.row}</label>
+                <input type="range" id="row_length" min="1" max="50" name="highSlider" onChange={this.lengthChangeHandler} defaultValue={this.state.length.row}></input>
+            </div>
+        )
+    }
 }
