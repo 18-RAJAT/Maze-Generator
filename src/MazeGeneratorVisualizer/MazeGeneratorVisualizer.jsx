@@ -426,8 +426,31 @@ render()
         actionContainer=
         (
             <div className="title">
+
+                {/* high slider */}
                 <label htmlFor="highSlider">Height:{this.state.length.row}</label>
                 <input type="range" id="row_length" min="1" max="50" name="highSlider" onChange={this.lengthChangeHandler} defaultValue={this.state.length.row}></input>
+
+                {/* width slider */}
+                <label htmlFor="widthSlider">Width:{this.state.length.col}</label>
+                <input type="range" id="col_length"min="1"max="50" name="widthSlider"onChange={this.lengthChangeHandler}defaultValue={this.state.length.col}></input>
+
+                {/* maze generate speed */}
+                <label htmlFor='speedsSlider'>Maze Generation Speed:</label>
+                <input type='range' min="1" max="20" defaultValue="10" name="speedsSlider" id="mazeSpeedRange"onChange={this.speedChangeHandler}></input>
+
+                {/* start point */}
+                <div className='startPointContainer'>
+                    <label htmlFor='point'>Start Point:</label>
+
+                    {/* row slider */}
+                    <input type='number'name='point' id='start_col'min='0'max={this.state.length.col-1}onChange={this.pointChangeHandler}
+                    defaultValue={this.state.point.start.row}></input>
+
+                    {/* col slider */}
+                    <input type='number'name='point' id='start_col'min='0'max={this.state.length.col-1}onchange={this.pointChangeHandler}defaultValue={this.state.points.start.col}></input>
+                </div>
+                {animationStateChangerButton}
             </div>
         )
     }
