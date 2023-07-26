@@ -421,7 +421,7 @@ render()
         </div>);
     }
     let actionContainer=<div></div>;
-    
+
     if(this.state.phase==="preMaze")
     {
         actionContainer=
@@ -477,7 +477,7 @@ render()
                 
                 <a href="https://www.linkedin.com/in/rajatjoshi18/" target = "blank"className="aboutLinkedin"><FaLinkedin/></a>
 
-                <a href="https://github.com/Suhaan-Bhandary" target = "blank"className="aboutGithub"><FaGithub/></a>
+                <a href="https://github.com/18-RAJAT" target = "blank"className="aboutGithub"><FaGithub/></a>
                 
                 <p className="aboutGmail"><SiGmail/> Rajatjoshi7535@gmail.com</p>
             </div>
