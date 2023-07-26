@@ -4,13 +4,13 @@ import html2canvas from 'html2canvas';
 //allows to create pdf of docs
 import jsPDF from 'jspdf';
 
-import {vscSettings} from "react-icons/vsc";
-import {GrYoutube} from "react-icons/gr";
-import {faLinkedin} from "react-icons/fa";
-import {FaGithub} from "react-icons/fa";
-import {SiGmail} from "react-icons/si";
-import { TiTickOutline } from "react-icons/ti";
-import { ImCross } from "react-icons/im";
+// import {vscSettings} from "react-icons/vsc";
+// import {GrYoutube} from "react-icons/gr";
+// import {faLinkedin} from "react-icons/fa";
+// import {FaGithub} from "react-icons/fa";
+// import {SiGmail} from "react-icons/si";
+// import { TiTickOutline } from "react-icons/ti";
+// import { ImCross } from "react-icons/im";
 
 export default class PathFindingVisualizer extends component
 {
@@ -421,6 +421,7 @@ render()
         </div>);
     }
     let actionContainer=<div></div>;
+    
     if(this.state.phase==="preMaze")
     {
         actionContainer=
@@ -451,7 +452,36 @@ render()
                     <input type='number'name='point' id='start_col'min='0'max={this.state.length.col-1}onchange={this.pointChangeHandler}defaultValue={this.state.points.start.col}></input>
                 </div>
                 {animationStateChangerButton}
+                <p style={{color:"red"}}>
+                    {this.state.errorMessage}
+                </p>
             </div>
-        )
+        );
+    }
+    else
+    {
+        actionContainer=(
+            <div className="About">
+                <h1 className='aboutHeading'>About Me</h1>
+                <p className='aboutDescription'>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At, impedit!
+                    <br />
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti voluptas nobis dignissimos ipsam. Illum, dolores.
+                </p>
+                
+                <h3 className='aboutCreatorName'>Rajat Joshi</h3>
+                
+                <div className="aboutLinks">
+                
+                <a href="https://www.youtube.com/@rajatjoshi4069" target = "blank"className="aboutYoutube"><GrYoutube /></a>
+                
+                <a href="https://www.linkedin.com/in/rajatjoshi18/" target = "blank"className="aboutLinkedin"><FaLinkedin/></a>
+
+                <a href="https://github.com/Suhaan-Bhandary" target = "blank"className="aboutGithub"><FaGithub/></a>
+                
+                <p className="aboutGmail"><SiGmail/> Rajatjoshi7535@gmail.com</p>
+            </div>
+            </div>
+        );
     }
 }
